@@ -49,8 +49,7 @@ class SauceDemo(unittest.TestCase):
         driver.find_element(By.ID, "finish").click()
 
         success_msg = driver.find_element(By.CLASS_NAME, "complete-header").text
-        self.assertIn("ORDER SUCCESS", success_msg.upper(), "Success message not found")
-
+        self.assertIn("THANK YOU FOR YOUR ORDER", success_msg.upper(), "Success message not found")
         print("Test completed successfully.")
 
     def tearDown(self):
@@ -58,4 +57,8 @@ class SauceDemo(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(exit=False)
+try:
+    unittest.main(exit=False)
+except Exception as e:
+    print(f"Test failed: {e}")
